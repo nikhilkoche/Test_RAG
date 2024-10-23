@@ -7,6 +7,7 @@ from langchain.schema.document import Document
 from get_embedding_function import get_embedding_function
 from langchain_chroma import Chroma
 import os
+from tqdm import tqdm
 
 CHROMA_PATH = "chroma"
 DATA_PATH = "data"
@@ -63,11 +64,25 @@ def add_to_chroma(chunks: list[Document]):
         if chunk.metadata["id"] not in existing_ids:
             new_chunks.append(chunk)
 
-    if len(new_chunks):
-        print(f"👉 Adding new documents: {len(new_chunks)}")
-        new_chunk_ids = [chunk.metadata["id"] for chunk in new_chunks]
-        db.add_documents(new_chunks, ids=new_chunk_ids)
+    # if len(new_chunks):
+    #     print(f"👉 Adding new documents: {len(new_chunks)}")
+    #     new_chunk_ids = [chunk.metadata["id"] for chunk in new_chunks]
+    #     db.add_documents(new_chunks, ids=new_chunk_ids)
         
+    # else:
+    #     print("✅ No new documents to add")
+
+    
+
+    if len(new_chunks) > 0:
+        print(f"👉 Adding new documents: {len(new_chunks)}")
+        
+        # Create a tqdm progress bar
+        with tqdm(total=len(new_chunks), desc="Adding Documents", unit="document") as pbar:
+            for chunk in new_chunks:
+                chunk_id = chunk.metadata["id"]
+                db.add_documents([chunk], ids=[chunk_id])  # Add one document at a time
+                pbar.update(1)  # Update the progress bar after each document is added
     else:
         print("✅ No new documents to add")
 
