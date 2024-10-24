@@ -122,16 +122,40 @@ def clear_database():
 
 
 
-def count_pdf_documents():
-    # Initialize a counter
+# def count_pdf_documents():
+#     # Initialize  counter
+#     pdf_count = 0
+
+#     # Iterate through the files in the specified folder
+#     for filename in os.listdir(DATA_PATH):
+#         if filename.endswith('.pdf') and os.path.isfile(os.path.join(DATA_PATH, filename)):
+#             pdf_count += 1
+
+#     return pdf_count
+        
+import os
+
+def count_pdf_documents(DATA_PATH):
+    # Initialize a counter for PDF documents
     pdf_count = 0
+
+    # Initialize a variable to keep track of the total size of the directory
+    total_size = 0
 
     # Iterate through the files in the specified folder
     for filename in os.listdir(DATA_PATH):
-        if filename.endswith('.pdf') and os.path.isfile(os.path.join(DATA_PATH, filename)):
-            pdf_count += 1
+        file_path = os.path.join(DATA_PATH, filename)
 
-    return pdf_count
+        # Check if the current path is a file and calculate its size
+        if os.path.isfile(file_path):
+            total_size += os.path.getsize(file_path)
+
+            # Increment the PDF count if the file is a PDF
+            if filename.endswith('.pdf'):
+                pdf_count += 1
+    total_size = total_size / (1024 ** 2)
+    return pdf_count, total_size
+
 
 def number_of_pages():
     total_pages = 0
