@@ -6,11 +6,16 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain.schema.document import Document
 from get_embedding_function import get_embedding_function
 from langchain_chroma import Chroma
+from memory_profiler import memory_usage
+# from populate_database import count_pdf_documents,number_of_pages
 import os
+import time
 from tqdm import tqdm
 
 CHROMA_PATH = "chroma"
 DATA_PATH = "data"
+
+
 
 
 def main():
@@ -20,7 +25,7 @@ def main():
     parser.add_argument("--reset", action="store_true", help="Reset the database.")
     args = parser.parse_args()
     if args.reset:
-        print("✨ Clearing Database")
+        print("🗑️ Clearing Database")
         clear_database()
 
     # Create (or update) the data store.
@@ -45,6 +50,12 @@ def split_documents(documents: list[Document]):
 
 
 def add_to_chroma(chunks: list[Document]):
+    
+    mem_start= memory_usage()[0]
+    start_time = time.time()
+    number_of_documents,total_size_docs = count_pdf_documents(DATA_PATH)
+    num_pages = number_of_pages()
+
     # Load the existing database.
     db = Chroma(
         persist_directory=CHROMA_PATH, embedding_function=get_embedding_function()
@@ -75,7 +86,7 @@ def add_to_chroma(chunks: list[Document]):
     
 
     if len(new_chunks) > 0:
-        print(f"👉 Adding new documents: {len(new_chunks)}")
+        print(f"📃Adding new documents: {len(new_chunks)}")
         
         # Create a tqdm progress bar
         with tqdm(total=len(new_chunks), desc="Adding Documents", unit="document") as pbar:
@@ -85,6 +96,14 @@ def add_to_chroma(chunks: list[Document]):
                 pbar.update(1)  # Update the progress bar after each document is added
     else:
         print("✅ No new documents to add")
+    
+    end_time=time.time()
+    mem_end= memory_usage()[0]
+    print(f"{'Total Number of Documents':<30}: {number_of_documents}")
+    print(f"{'Total Number of Pages':<30}: {num_pages}")
+    print(f"{'Total size of documents':<30}: {round(total_size_docs,2)}{' MiB'}")
+    print(f"{'Memory Usage':<30}: {round(mem_end-mem_start,2)}{' MiB'}")
+    print(f"{'Latency (seconds)':<30}: {round(end_time - start_time, 3)}{' s'}")
 
 
 def calculate_chunk_ids(chunks):
@@ -120,20 +139,6 @@ def clear_database():
     if os.path.exists(CHROMA_PATH):
         shutil.rmtree(CHROMA_PATH)
 
-
-
-# def count_pdf_documents():
-#     # Initialize  counter
-#     pdf_count = 0
-
-#     # Iterate through the files in the specified folder
-#     for filename in os.listdir(DATA_PATH):
-#         if filename.endswith('.pdf') and os.path.isfile(os.path.join(DATA_PATH, filename)):
-#             pdf_count += 1
-
-#     return pdf_count
-        
-import os
 
 def count_pdf_documents(DATA_PATH):
     # Initialize a counter for PDF documents
