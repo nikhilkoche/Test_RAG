@@ -74,37 +74,17 @@ def add_to_chroma(chunks: list[Document]):
         if chunk.metadata["id"] not in existing_ids:
             new_chunks.append(chunk)
 
-    # if len(new_chunks):
-    #     print(f"👉 Adding new documents: {len(new_chunks)}")
-    #     new_chunk_ids = [chunk.metadata["id"] for chunk in new_chunks]
-    #     db.add_documents(new_chunks, ids=new_chunk_ids)
+    if len(new_chunks):
+        print(f"👉 Adding new documents: {len(new_chunks)}")
+        new_chunk_ids = [chunk.metadata["id"] for chunk in new_chunks]
+        db.add_documents(new_chunks, ids=new_chunk_ids)
         
-    # else:
-    #     print("✅ No new documents to add")
-
-    
-
-    if len(new_chunks) > 0:
-        print(f"📃Adding new documents: {len(new_chunks)}")
-        
-        # Create a tqdm progress bar
-        with tqdm(total=len(new_chunks), desc="Adding Documents", unit="document") as pbar:
-            for chunk in new_chunks:
-                chunk_id = chunk.metadata["id"]
-                db.add_documents([chunk], ids=[chunk_id])  # Add one document at a time
-                pbar.update(1)  # Update the progress bar after each document is added
     else:
         print("✅ No new documents to add")
+
     
-    end_time=time.time()
-    mem_end= memory_usage()[0]
-    print(f"{'Total Number of Documents':<30}: {number_of_documents}")
-    print(f"{'Total Number of Pages':<30}: {num_pages}")
-    print(f"{'Total size of documents':<30}: {round(total_size_docs,2)}{' MiB'}")
-    print(f"{'Memory Usage':<30}: {round(mem_end-mem_start,2)}{' MiB'}")
-    print(f"{'Latency (seconds)':<30}: {round(end_time - start_time, 3)}{' s'}")
 
-
+   
 def calculate_chunk_ids(chunks):
 
     # This will create IDs like "data/monopoly.pdf:6:2"
