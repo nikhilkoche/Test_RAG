@@ -54,18 +54,8 @@ def query_rag(query_text: str):
     #formatted_response = f"Response: {response_text}\nSources: {sources}"
     formatted_response = f"Response: {response_text}"
     number_of_documents,total_size_docs = count_pdf_documents(DATA_PATH)
-    num_pages = number_of_pages()
-    # print(formatted_response)
-    # print(f'Total number of Documents: {number_of_documents} and total number of pages:{num_pages}')
-    # print("Inference Time(in seconds):",round(end_time-start_time,3))
-    # print(f'Model:',{model.model})
+    num_pages = number_of_pages() 
     print(formatted_response)
-    print(f"{'Total Number of Documents':<30}: {number_of_documents}")
-    print(f"{'Total Number of Pages':<30}: {num_pages}")
-    print(f"{'Total size of documents':<30}: {round(total_size_docs,2)}{' MiB'}")
-    print(f"{'Memory Usage':<30}: {round(mem_end-mem_start,2)}{' MiB'}")
-    print(f"{'Latency (seconds)':<30}: {round(end_time - start_time, 3)}{' s'}")
-    print(f"{'Model':<30}: {model.model}")
 
 
 
