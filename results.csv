@@ -1,0 +1,41 @@
+Model,Total Number of Documents,Total Number of Pages,Total Size of Documents (MiB),Memory Usage (MiB),Latency (seconds),CPU Usage (%),Query text,Response
+llama3.1,1,11,0.99,19.41,41.911,6.1,What is the text about?,The text is about heat stress training and prevention in occupational settings. It outlines key components that should be covered in such training and provides guidelines for assessing and managing heat stress risks.
+llama3.2,1,11,0.99,19.43,21.518,6.3,What is the text about?,"The text is about heat stress safety in the workplace, specifically providing information on occupational safety and health guidelines, heat stress hazards, recognition of symptoms, and first-aid procedures for heat stroke."
+llama3.2:1b,1,11,0.99,19.32,13.472,4.6,What is the text about?,"The text is about Occupational Safety and Health (NIOSH) guidelines for heat stress training, specifically how to identify symptoms that may precede heat stroke. It also provides information on heat stress monitors, calculation methods, and limits of permissible exposure."
+llama3.2:1b-instruct-q2_K,1,11,0.99,19.64,6.374,6.4,What is the text about?,"The text you've requested to answer is:
+
+Heat Stress Training
+-------------------------"
+llama3.1,4,40,5.07,21.3,55.634,6.0,What is the text about?,"The text appears to be about safety guidelines and regulations for Mobile Elevating Work Platforms (MEWPs) used in construction sites. It covers topics such as maintenance requirements, operator training, equipment inspection checklists, and safety signs that must be displayed on the platform."
+llama3.2,4,40,5.07,21.24,21.779,5.9,What is the text about?,"The text appears to be related to safety guidelines for mobile elevating work platforms, specifically focusing on their proper use, maintenance, and operation. It provides information on signs and warnings that must be displayed, manuals that must be provided, and training requirements, particularly for heat stress prevention."
+llama3.2:1b,4,40,5.07,21.27,14.023,5.9,What is the text about?,"The text is about ensuring that warning signs, decals, and other safety-related information are clearly visible and easily readable on mobile elevating work platforms (MEWPs), particularly in a construction site setting. It highlights the importance of providing clear instructions and warnings to operators regarding the use of MEWPs to prevent accidents and ensure worker protection."
+llama3.2:1b-instruct-q2_K,4,40,5.07,21.6,7.651,6.1,What is the text about?,"The article you've requested exists into its very basic data structure. It appears to be a denial of a character called ""text"" when it's applied to a specific set of input arguments, as shown here.
+
+Text, Machine-Yourself (MVP), and Safety Act"
+llama3.1,1,132,9.75,22.64,50.578,6.1,What is the text about?,"The text appears to be an excerpt from a report on the state of Ontario's natural resources and biodiversity, specifically discussing various environmental issues affecting the province such as dissolved oxygen concentrations in water, ecological health, and the impact of human activities on water quality."
+llama3.2,1,132,9.75,22.85,23.256,6.5,What is the text about?,"The text appears to be about biodiversity in Ontario, Canada. It discusses various reports and topics related to the health of ecosystems, ecological health, and sustainability, including the impact of human activities such as urbanization, hunting and fishing, invasive species, air and water pollution, and climate change on biodiversity."
+llama3.2:1b,1,132,9.75,22.18,14.956,5.0,What is the text about?,"The text appears to be an introduction or overview of Ontario's ecosystems and their ecological health. It provides information on the three ecozones (Mixedwood Plains, Hudson Bay Lowlands, and Ontario Shield) and how they are classified based on biodiversity, air and water pollution, invasive species, diseases, climate change, hunting and fishing, and conservation efforts."
+llama3.2:1b-instruct-q2_K,1,132,9.75,22.61,11.435,6.5,What is the text about?,"Based on the given information, it seems like the text you're trying to read is actually ""State of Ontario’s Natural Resources"" report. Here's a quote from that report to understand its content:
+
+""Species act, 2007 as species at risk.
+Species of special
+concern Species that may become threatened or endangered in the future due to biological features or other external threats.""
+
+This text suggests it's about ""The state of Ontario's natural resources"" and has something to do with ""Species of special concern"", which are typically things that humans don't have, but rather animals."
+llama3.1,6,619,34.67,27.35,74.795,7.3,What is the text about?,"The text appears to be about occupational health and safety regulations, specifically around providing information and training to workers, as well as handling sensitive information related to workplace violence. However, it's not actually relevant to the initial question I was supposed to answer.
+
+If I had to answer based on the original context provided at the top (Section B: Working for You), the text is about a government act aimed at increasing transparency on ancillary fees and student costs, as well as supporting student mental health and campus safety."
+llama3.2,6,619,34.67,27.53,41.774,6.7,What is the text about?,"The text does not seem to be directly related to any specific workplace or job, but rather appears to be part of a larger document discussing various legal concepts and terms, specifically those related to occupational health and safety in Ontario, Canada. However, there are two main parts that could be considered separate texts:
+
+1. A section about a new government law called the ""Strengthening Accountability and Student Supports Act, 2024"" and its provisions regarding colleges and universities.
+
+2. A part of an Occupational Health and Safety Act, focusing on various definitions and terms related to workplace safety, such as ""health and safety representative,"" ""homework,"" ""industrial establishment,"" ""inspector,"" etc."
+llama3.2:1b,6,619,34.67,27.68,18.083,7.0,What is the text about?,"The text appears to be related to labor laws, specifically focusing on workplace safety and health. It discusses a provision under the Strengthening Accountability and Student Supports Act, 2024, which requires colleges and universities to provide information about ancillary fees, textbooks, and other student costs. This is part of efforts to increase transparency and support students' mental health and well-being, while also ensuring campus safety and inclusivity."
+llama3.2:1b-instruct-q2_K,6,619,34.67,27.46,16.255,6.5,What is the text about?,"The questions seem straightforward, but they require more knowledge to answer them.
+
+1. ""What is the strongest aspect of the government's account"" - How do we make this work? This step requires many things that are prescribed in Step 3.
+2. A ""standard"" with a standard ""percent"" may be prescribed for you to have access to information in Step 4. This step requires us to perform certain actions on this purpose and then having the following information, as an object or a part of something in our power or we have had.
+
+To clarify: Some steps are required before they have a chance to affect their outcome.
+
+""Standard"" has many ""percent""s."""

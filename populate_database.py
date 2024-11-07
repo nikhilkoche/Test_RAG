@@ -25,7 +25,7 @@ def main():
     parser.add_argument("--reset", action="store_true", help="Reset the database.")
     args = parser.parse_args()
     if args.reset:
-        print("🗑️ Clearing Database")
+        print("Clearing Database")
         clear_database()
 
     # Create (or update) the data store.
@@ -86,7 +86,7 @@ def add_to_chroma(chunks: list[Document]):
     
 
     if len(new_chunks) > 0:
-        print(f"📃Adding new documents: {len(new_chunks)}")
+        print(f"Adding new documents: {len(new_chunks)}")
         
         # Create a tqdm progress bar
         with tqdm(total=len(new_chunks), desc="Adding Documents", unit="document") as pbar:
@@ -95,7 +95,7 @@ def add_to_chroma(chunks: list[Document]):
                 db.add_documents([chunk], ids=[chunk_id])  # Add one document at a time
                 pbar.update(1)  # Update the progress bar after each document is added
     else:
-        print("✅ No new documents to add")
+        print("No new documents to add")
     
     end_time=time.time()
     mem_end= memory_usage()[0]

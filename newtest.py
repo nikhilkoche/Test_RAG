@@ -3,6 +3,7 @@ import psutil
 from memory_profiler import memory_usage
 import argparse
 import time
+import gc
 from langchain_chroma import Chroma
 from langchain.prompts import ChatPromptTemplate
 from langchain_ollama import OllamaLLM
@@ -34,12 +35,15 @@ def main():
 
     # Run query_rag for the specified model
     query_rag(query_text, model_name)
+    # Run the garbage collector
+    gc.collect()
+    
 
 def query_rag(query_text: str, model_name: str):
     # Prepare the DB.
     mem_start = memory_usage()[0]
     start_time = time.time()
-    cpu_start = psutil.cpu_percent(interval=None)  # Start measuring CPU before the operation
+    #cpu_start = psutil.cpu_percent(interval=None)  # Start measuring CPU before the operation
     embedding_function = get_embedding_function()
     db = Chroma(persist_directory=CHROMA_PATH, embedding_function=embedding_function)
 
@@ -62,14 +66,17 @@ def query_rag(query_text: str, model_name: str):
     
     # Store data in a dictionary for easy DataFrame creation
     data = {
-        "Response": [response_text],
+        "Model": [model_name],
         "Total Number of Documents": [number_of_documents],
         "Total Number of Pages": [num_pages],
         "Total Size of Documents (MiB)": [round(total_size_docs, 2)],
         "Memory Usage (MiB)": [round(mem_end - mem_start, 2)],
         "Latency (seconds)": [round(end_time - start_time, 3)],
-        "CPU Usage (%)": [cpu_end - cpu_start],
-        "Model": [model_name]
+        "CPU Usage (%)": [round(cpu_end,3)],
+        "Query text":[query_text],
+        "Response": [response_text]
+        
+        
     }
 
     # Convert the dictionary to a DataFrame

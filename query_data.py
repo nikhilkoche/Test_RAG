@@ -1,6 +1,5 @@
 from memory_profiler import memory_usage, profile
 import argparse
-import cProfile
 from langchain_chroma import Chroma
 from langchain.prompts import ChatPromptTemplate
 #from langchain_community.llms.ollama import Ollama
@@ -29,10 +28,8 @@ def main():
     parser.add_argument("query_text", type=str, help="The query text.")
     args = parser.parse_args()
     query_text = args.query_text
-    #query_rag(query_text)
-    profiler = cProfile.Profile()
-    profiler.runcall(query_rag, query_text)
-    profiler.print_stats()
+    query_rag(query_text)
+    
 
 
 
@@ -50,7 +47,7 @@ def query_rag(query_text: str):
     prompt = prompt_template.format(context=context_text, question=query_text)
     # print(prompt)
     start_time = time.time()
-    model = OllamaLLM(model="llama3.2:1b-instruct-q2_K ")
+    model = OllamaLLM(model="qwen2.5:3b")
     response_text = model.invoke(prompt)
     mem_end= memory_usage()[0]
 
