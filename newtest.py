@@ -23,33 +23,23 @@ Answer the question based only on the following context:
 Answer the question based on the above context: {question}
 """
 
-# Define the list of models to iterate over
-MODEL_NAMES = [
-    "llama3.2:1b-instruct-q2_K",
-    "llama3.2:1b",
-    "llama3.2",
-    "llama3.1"
-    # Add more models as needed
-]
-
 def main():
     # Create CLI.
     parser = argparse.ArgumentParser()
     parser.add_argument("query_text", type=str, help="The query text.")
+    parser.add_argument("model_name", type=str, help="The model name to use (e.g., 'llama3.2:1b-instruct-q2_K').")
     args = parser.parse_args()
     query_text = args.query_text
+    model_name = args.model_name
 
-    # Loop through each model and run query_rag
-    for model_name in MODEL_NAMES:
-        query_rag(query_text, model_name)
-        time.sleep(60)
+    # Run query_rag for the specified model
+    query_rag(query_text, model_name)
 
 def query_rag(query_text: str, model_name: str):
     # Prepare the DB.
     mem_start = memory_usage()[0]
-    cpu_start = psutil.cpu_percent(interval=None)  # Start measuring CPU before the operation
     start_time = time.time()
-
+    cpu_start = psutil.cpu_percent(interval=None)  # Start measuring CPU before the operation
     embedding_function = get_embedding_function()
     db = Chroma(persist_directory=CHROMA_PATH, embedding_function=embedding_function)
 
@@ -62,9 +52,9 @@ def query_rag(query_text: str, model_name: str):
 
     model = OllamaLLM(model=model_name)
     response_text = model.invoke(prompt)
+    cpu_end = psutil.cpu_percent(interval=None)  # End measuring CPU after the operation
     
     end_time = time.time()
-    cpu_end = psutil.cpu_percent(interval=None)  # End measuring CPU after the operation
     mem_end = memory_usage()[0]
 
     number_of_documents, total_size_docs = count_pdf_documents(DATA_PATH)

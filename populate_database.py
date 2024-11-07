@@ -7,6 +7,7 @@ from langchain.schema.document import Document
 from get_embedding_function import get_embedding_function
 from langchain_chroma import Chroma
 from memory_profiler import memory_usage
+# from populate_database import count_pdf_documents,number_of_pages
 import os
 import time
 from tqdm import tqdm

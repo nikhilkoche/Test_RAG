@@ -1,10 +1,11 @@
 from memory_profiler import memory_usage, profile
 import argparse
+import cProfile
 from langchain_chroma import Chroma
 from langchain.prompts import ChatPromptTemplate
 #from langchain_community.llms.ollama import Ollama
 from langchain_ollama import OllamaLLM
-from langchain_huggingface import ChatHuggingFace
+#from langchain_huggingface import ChatHuggingFace
 import time
 from get_embedding_function import get_embedding_function
 from populate_database import count_pdf_documents,number_of_pages
@@ -28,7 +29,11 @@ def main():
     parser.add_argument("query_text", type=str, help="The query text.")
     args = parser.parse_args()
     query_text = args.query_text
-    query_rag(query_text)
+    #query_rag(query_text)
+    profiler = cProfile.Profile()
+    profiler.runcall(query_rag, query_text)
+    profiler.print_stats()
+
 
 
 def query_rag(query_text: str):
@@ -45,7 +50,7 @@ def query_rag(query_text: str):
     prompt = prompt_template.format(context=context_text, question=query_text)
     # print(prompt)
     start_time = time.time()
-    model = OllamaLLM(model="llama3.2")
+    model = OllamaLLM(model="llama3.2:1b-instruct-q2_K ")
     response_text = model.invoke(prompt)
     mem_end= memory_usage()[0]
 
@@ -71,3 +76,4 @@ def query_rag(query_text: str):
 
 if __name__ == "__main__":
     main()
+    
