@@ -1,0 +1,8 @@
+langchain-ollama
+memory-profiler
+chromadb
+langchain-chroma
+langchain
+langchain-text-splitters
+langchain_community
+pypdf
