@@ -3,3 +3,6 @@
 backup
 chroma
 __pycache__
+results.csv
+.dockerignore
+Dockerfile

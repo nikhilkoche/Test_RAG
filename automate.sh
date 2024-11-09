@@ -6,9 +6,11 @@ QUERY_TEXT="What is the text about?"
 # Define the list of models
 MODELS=(
     "llama3.1"
+    "qwen2.5"
+    "mistral"
     "llama3.2"
+    "qwen2.5:3b" 
     "llama3.2:1b"
-    "llama3.2:1b-instruct-q2_K"
     # Add more models as needed
 )
 

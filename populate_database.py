@@ -99,11 +99,11 @@ def add_to_chroma(chunks: list[Document]):
     
     end_time=time.time()
     mem_end= memory_usage()[0]
-    print(f"{'Total Number of Documents':<30}: {number_of_documents}")
-    print(f"{'Total Number of Pages':<30}: {num_pages}")
-    print(f"{'Total size of documents':<30}: {round(total_size_docs,2)}{' MiB'}")
-    print(f"{'Memory Usage':<30}: {round(mem_end-mem_start,2)}{' MiB'}")
-    print(f"{'Latency (seconds)':<30}: {round(end_time - start_time, 3)}{' s'}")
+    # print(f"{'Total Number of Documents':<30}: {number_of_documents}")
+    # print(f"{'Total Number of Pages':<30}: {num_pages}")
+    # print(f"{'Total size of documents':<30}: {round(total_size_docs,2)}{' MiB'}")
+    # print(f"{'Memory Usage':<30}: {round(mem_end-mem_start,2)}{' MiB'}")
+    # print(f"{'Latency (seconds)':<30}: {round(end_time - start_time, 3)}{' s'}")
 
 
 def calculate_chunk_ids(chunks):
