@@ -73,3 +73,4 @@ ls "$SOURCE_DIR" | tail -n +5 | xargs -I {} cp "$SOURCE_DIR/{}" "$TARGET_DIR"
 run_models "${QUERY_TEXTS[3]}"
 echo "Clearing destination directory..."
 rm -rf "$TARGET_DIR"/*
+
