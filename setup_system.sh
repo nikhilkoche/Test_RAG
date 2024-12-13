@@ -18,12 +18,13 @@ ollama run mistral
 
 
 # Clone the repository (replace with your repository URL)
-REPO_URL="https://github.com/nikhilkoche/Test_RAG.git"
+REPO_URL="https://github.com/getForged/aihub.git"
 REPO_DIR="Test_RAG"
+BRANCH_NAME="automate_benchmark"
 
 # Check if the repository is already cloned; if not, clone it
 if [ ! -d "$REPO_DIR" ]; then
-    git clone -b automate $REPO_URL
+    git clone -b $BRANCH_NAME $REPO_URL
 fi
 
 # Change to the repository directory
