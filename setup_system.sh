@@ -41,6 +41,8 @@ if [ -f "requirements.txt" ]; then
 fi
 
 # Deactivate the virtual environment
-deactivate
+#deactivate
 
-echo "Setup complete. The environment is ready. Activate it using 'source venv/bin/activate'."
+#echo "Setup complete. The environment is ready. Activate it using 'source venv/bin/activate'."
+echo "Setup complete. The environment is ready."
+

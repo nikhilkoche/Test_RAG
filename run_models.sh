@@ -2,25 +2,25 @@
 
 # Define the list of query texts for each step
 QUERY_TEXTS=(
-    "What are some of the recommended first aid steps to treat someone experiencing heat exhaustion?"
-    "What are the characteristics that distinguish a platform ladder from other types of ladders used in construction?"
-    "What are the key considerations for planning stormwater management in alignment with sewage and water services, as outlined in the Provincial Planning Statement, 2024?"
+    #"What are some of the recommended first aid steps to treat someone experiencing heat exhaustion?"
+    #"What are the characteristics that distinguish a platform ladder from other types of ladders used in construction?"
+    #"What are the key considerations for planning stormwater management in alignment with sewage and water services, as outlined in the Provincial Planning Statement, 2024?"
     "What was the federal government's target date for eliminating long-term drinking water advisories in First Nations communities, and was this target achieved by February 2023?"
 )
 
 # Define the list of models
 MODELS=(
-    "llama3.1"
-    "qwen2.5"
-    "mistral"
-    "llama3.2"
-    "qwen2.5:3b" 
+    #"llama3.1"
+    #"qwen2.5"
+    #"mistral"
+    #"llama3.2"
+    #"qwen2.5:3b" 
     "llama3.2:1b"
     # Add more models as needed
 )
 
 # Define source and target directories for file copying
-SOURCE_DIR="data_1"
+SOURCE_DIR="data_source"
 TARGET_DIR="data"
 
 # Ensure the target directory exists
